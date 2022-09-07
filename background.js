@@ -86,7 +86,7 @@ function setBadgeInfo(tabId, identityInfo) {
 
 
 function getIdentity(tabId) {
-    if ( tabId > 0 ) {
+    if (tabId > 0) {
         return !tabIdToIdentityMap[tabId] ? "" : tabIdToIdentityMap[tabId];
     }
 }
@@ -138,7 +138,7 @@ chrome.tabs.onCreated.addListener((tab) => {
         }
 
         var url = tab.pendingUrl ? tab.pendingUrl : tab.url;
-        if (tab.openerTabId && url && !url.startsWith("chrome"))
+        if (tab.openerTabId && url != undefined && !url.startsWith("chrome"))
             mapTabIdToIdentity(tab.id, getIdentity(tab.openerTabId));
     }
 });
@@ -248,13 +248,13 @@ chrome.webNavigation.onDOMContentLoaded.addListener((details) => {
 //Communication between page injected script and extension to exchange identity info
 chrome.runtime.onConnect.addListener((port) => {
     port.onMessage.addListener(function (statement) {
-        if (statement.index == 1) {
-            if (port.sender.tab) {
+        if (statement.index == 1 && port.sender.tab) {
+            identity = getIdentity(port.sender.tab.id);
+            if (identity)
                 port.postMessage({
                     index: 2,
-                    identity: getIdentity(port.sender.tab.id)
+                    identity: identity
                 });
-            }
         }
     });
 });

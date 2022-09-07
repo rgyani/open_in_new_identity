@@ -8,10 +8,7 @@ try {
     connect = chrome.runtime.connect();
     connect.onMessage.addListener((msg) => {
         if (msg.index == 2) {
-            if ("undefined" == msg.identity)
-                window.location.reload();
-            else
-                prefix = msg.identity;
+            prefix = msg.identity;
         }
     });
     connect.postMessage({
