@@ -15,6 +15,8 @@ Under the hood, it separates website storage into tab-specific Identites. Cookie
 * Avoid leaving social-network footprints all over the web (for example, you could use an Identity tab for signing in to a social network, and use a different tab for visiting online news sites, keeping your social identity separate from tracking scripts on news sites)
 * After installing the extension, click the extension icon to edit your Identities.
 
+![img](docs/screenshot.PNG)
+
 ## Loading the extension
 
 1. Checkout this project in a location on your computer
