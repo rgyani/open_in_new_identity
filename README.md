@@ -34,3 +34,17 @@ Behold thy extension!
 ### Usage
 
 * Personally using Only for AWS Single-signon, Use at your own risk.
+
+
+### Manifest v3 support (ToDD)
+
+Chrome developers at Google began working on Manifest v3 almost four years ago.  
+Harsh criticism of the idea and its implementation followed in early 2019, especially from the developers of ad blockers and the like. 
+
+#### Filter API limitations
+The main change to be implemented with the introduction of Manifest v3 are restrictions on the Web Request API.     
+Extensions should only be able to read browser requests, but not block, modify or redirect them.   
+As an alternative, the Declarative Net Request API (DNR) will be introduced.
+
+
+
